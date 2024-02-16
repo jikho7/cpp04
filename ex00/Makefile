@@ -1,4 +1,4 @@
-NAME = ex00
+NAME = animal
 SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongCat.cpp WrongAnimal.cpp
 OBJ := $(SRC:%.cpp=%.o)
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98

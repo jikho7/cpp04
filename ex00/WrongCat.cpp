@@ -1,14 +1,8 @@
 #include "WrongCat.hpp"
-#include "WrongAnimal.hpp"
 
-WrongCat::WrongCat(): WrongAnimal("Cat")
+WrongCat::WrongCat(): WrongAnimal("WrongCat")
 {
-	std::cout << "(WrongCat) Default constructor." << " Type: " << this->_type << std::endl;
-}
-
-WrongCat::~WrongCat()
-{
-	std::cout << "(WrongCat) Default destructor." << std::endl;
+	std::cout << "(WrongCat) Default constructor." << std::endl;
 }
 
 // Cat::Cat(std::string type): Animal(type)
@@ -16,18 +10,24 @@ WrongCat::~WrongCat()
 // 	std::cout << "(Cat) Parametric constructor" << std::endl;
 // }
 
-WrongCat::WrongCat(const WrongCat &other) // copy
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal(other)
 {
-	this->_type = other._type;
+	*this = other;
+}
+
+WrongCat::~WrongCat()
+{
+	std::cout << "(WrongCat) Default destructor." << std::endl;
 }
 
 WrongCat& WrongCat::operator=(const WrongCat &other)
 {
-	(void)other;
+	if (this != &other)
+		this->_type = other._type;
 	return *this;
 }
 
 void WrongCat::makeSound() const
 {
-	std::cout << "Wrong Miaou" << std::endl;
+	std::cout << "(Wrong cat) Miaou" << std::endl;
 }

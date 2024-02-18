@@ -1,9 +1,9 @@
 #include "Cat.hpp"
 #include "Animal.hpp"
 
-Cat::Cat(): Animal("Cat")
+Cat::Cat() : Animal("Cat")
 {
-	std::cout << "(Cat) Default constructor." << " Type: " << this->_type << std::endl;
+	std::cout << "(Cat) Default constructor." << std::endl;
 }
 
 Cat::~Cat()
@@ -16,14 +16,17 @@ Cat::~Cat()
 // 	std::cout << "(Cat) Parametric constructor" << std::endl;
 // }
 
-Cat::Cat(const Cat &other) // copy
+Cat::Cat(const Cat &other) : Animal(other)
 {
-	this->_type = other._type;
+	*this = other;
 }
 
 Cat& Cat::operator=(const Cat &other)
 {
-	(void)other;
+	if(this != &other)
+	{
+		this->_type = other.getType();
+	}
 	return *this;
 }
 

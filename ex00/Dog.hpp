@@ -9,9 +9,10 @@ class Dog : public Animal
 {
 	public:
 		Dog();
-		~Dog();
 		//Dog(std::string type);
 		Dog(const Dog &other);
+		virtual ~Dog();
+		
 		Dog& operator=(const Dog &other);
 
 		virtual void makeSound() const;

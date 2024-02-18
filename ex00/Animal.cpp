@@ -1,8 +1,21 @@
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal() :
+_type("no type")
 {
 	std::cout << "(Animal) Default constructor" << std::endl;
+}
+
+
+Animal::Animal(std::string const type) :
+_type(type)
+{
+	std::cout << "(Animal) Parametric constructor" << std::endl;
+}
+
+Animal::Animal(const Animal &other)
+{
+	*this = other;
 }
 
 Animal::~Animal()
@@ -10,25 +23,18 @@ Animal::~Animal()
 	std::cout << "(Animal) Default destructor" << std::endl;
 }
 
-Animal::Animal(std::string type) : _type(type)
-{
-	std::cout << "(Animal) Parametric constructor" << std::endl;
-}
-
-Animal::Animal(const Animal &other) // copy
-{
-	this->_type = other._type;
-}
-
 Animal& Animal::operator=(const Animal &other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		this->_type = other.getType();
+	}
 	return *this;
 }
 
 void Animal::makeSound() const
 {
-	std::cout << "Animal ft_makesound" << std::endl;
+	std::cout << "(Animal) makesound" << std::endl;
 }
 
 std::string Animal::getType() const

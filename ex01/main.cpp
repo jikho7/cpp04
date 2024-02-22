@@ -1,56 +1,80 @@
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
+
 //valgrind --leak-check=full ./executable
+
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* cat1 = new Cat();
-	const Animal* b;
-	const Animal* dog1 = new Dog();
-	const WrongAnimal* wani = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
+	Cat chat1;
+	Cat chat2;
+	Cat chat3;
 
-	std::cout << "\n";
-	std::cout << "Get type : \n" << std::endl;
-
-	std::cout << "animal : " << meta->getType() << " " << std::endl;
-	std::cout << "cat : " << cat1->getType() << " " << std::endl;
-	std::cout << "dog : " << dog1->getType() << " " << std::endl;
-	std::cout << "wrong animal : " << wani->getType() << " " << std::endl;
-	std::cout << "wrong cat : " << wcat->getType() << " " << std::endl;
-
-	b = cat1;
-	std::cout << "b = cat : " << b->getType() << " " << std::endl;
+	std::cout << "type c1 : " << chat1.getType() << std::endl;
+	std::cout << "type c2 : " << chat2.getType() << std::endl;
+	chat1.getBrain()->setIdeas("c1 hapi", 0);
+	chat1.getBrain()->setIdeas("c1 g fin", 1);
+	chat1.getBrain()->setIdeas("c1 g soaf", 2);
+	chat1.getBrain()->setIdeas("c1 g someil", 3);
 
 	std::cout << "\n";
 
-	std::cout << "Animal makes sound : ";
-	meta->makeSound();
-	std::cout << "Cat makes sound : ";
-	cat1->makeSound();
-	std::cout << "Dog makes sound : ";
-	dog1->makeSound();
-	std::cout << "Wrong animal makes sound : ";
-	wani->makeSound();
-	std::cout << "Wrong cat makes sound : ";
-	wcat->makeSound();
-	std::cout << "b = cat Wrong cat makes sound : ";
-	b->makeSound();
+	chat2.getBrain()->setIdeas("c2 hapi", 0);
+	chat2.getBrain()->setIdeas("c2 g fin", 1);
+	chat2.getBrain()->setIdeas("c2 g soaf", 2);
+	chat2.getBrain()->setIdeas("c2 g someil", 3);
 
-	delete cat1;
-	delete meta;
-	delete dog1;
-	delete wani;
-	delete wcat;
+	std::cout << "\n";
 
-	cat1 = 0;
-	meta = 0;
-	dog1 = 0;
-	wani = 0;
-	wcat = 0;
+	std::cout << "c1 " << chat1.getBrain()->getIdeas(0) << std::endl;
+	std::cout << "c1 " << chat1.getBrain()->getIdeas(1) << std::endl;
+	std::cout << "c1 " << chat1.getBrain()->getIdeas(2) << std::endl;
+	std::cout << "c1 " << chat1.getBrain()->getIdeas(3) << std::endl;
+	//std::cout << "type : " << Plol.getType() << std::endl;
 
-	return 0;
+	std::cout << "\n";
+	std::cout << "copie c1 dans c2" << std::endl;
+
+	chat2 = chat1;
+
+	std::cout << "c2 " << chat2.getBrain()->getIdeas(0) << std::endl;
+	std::cout << "c2 " << chat2.getBrain()->getIdeas(1) << std::endl;
+	std::cout << "c2 " << chat2.getBrain()->getIdeas(2) << std::endl;
+	std::cout << "c2 " << chat2.getBrain()->getIdeas(3) << std::endl;
+
+	std::cout << "\n";
+	std::cout << "copie c1 dans c3" << std::endl;
+
+	chat3 = chat1;
+
+	std::cout << "c3 " << chat3.getBrain()->getIdeas(0) << std::endl;
+	std::cout << "c3 " << chat3.getBrain()->getIdeas(1) << std::endl;
+	std::cout << "c3 " << chat3.getBrain()->getIdeas(2) << std::endl;
+	std::cout << "c3 " << chat3.getBrain()->getIdeas(3) << std::endl;
+
+	std::cout << "adresse brain chat1 : " << chat1.getBrain() << std::endl;
+	std::cout << "adresse brain chat2 : " << chat2.getBrain() << std::endl;
+	std::cout << "adresse brain chat3 : " << chat3.getBrain() << std::endl;
+	std::cout << "\n";
+
+	Animal *liste[4];
+	for(int i(0); i < 4; i++)
+	{
+		if (i % 2)
+			liste[i] = new Cat();
+		else
+			liste[i] = new Dog();
+	}
+
+	for(int i(0); i < 4; i++)
+	{
+		liste[i]->makeSound();
+	}
+
+	for(int i(0); i < 4; i++)
+	{
+		delete (liste[i]);
+	}
+
+	return(0);
 }

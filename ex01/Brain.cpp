@@ -17,8 +17,21 @@ Brain::Brain(const Brain &other)
 
 Brain& Brain::operator=(const Brain &other)
 {
-    (void)other;
-    // if (this != &other)
-    //     this->_type = other._type
-    return *this;
+	for (int i = 0; i < 100; ++i)
+	{
+		(this->_ideas)[i] = other.getIdeas(i);
+	}
+	return *this;
+}
+
+void Brain::setIdeas(std::string ideas, int i)
+{
+    if (i >= 0 and i <= 100)
+        this->_ideas[i] = ideas;
+}
+
+std::string Brain::getIdeas(int i) const
+{   if (i >= 0 and i <= 100)
+        return this->_ideas[i];
+    return(0);
 }

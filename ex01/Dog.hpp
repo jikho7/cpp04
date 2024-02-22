@@ -13,13 +13,13 @@ class Dog : public Animal
 		//Dog(std::string type);
 		Dog(const Dog &other);
 		virtual ~Dog();
-		
-		Dog& operator=(const Dog &other);
 
+		Dog& operator=(const Dog &other);
+		Brain* getBrain() const;
 		virtual void makeSound() const;
 
 	private:
-		Brain *brain;
+	Brain *_brain;
 
 };
 

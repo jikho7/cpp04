@@ -1,5 +1,5 @@
-NAME = ex02
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+NAME = abstract
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
 OBJ := $(SRC:%.cpp=%.o)
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 CXX = g++

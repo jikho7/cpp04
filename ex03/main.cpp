@@ -1,20 +1,19 @@
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
 #include "Cure.hpp"
 #include "Ice.hpp"
-#include "ICharacter.hpp"
-
-
-
+#include "Character.hpp"
 
 int main()
 {
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
-	src->learnMateria(new Cure());
+	//src->learnMateria(new Cure());
 	ICharacter* me = new Character("me");
+	std::cout << "fuck0" << std::endl;
 	AMateria* tmp;
+	std::cout << "fuck1" << std::endl;
 	tmp = src->createMateria("ice");
+	std::cout << "fuck2" << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);

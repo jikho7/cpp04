@@ -3,6 +3,9 @@
 
 #include <string>
 #include <iostream>
+#include "ICharacter.hpp"
+
+class	ICharacter;
 
 class AMateria
 {
@@ -10,7 +13,7 @@ class AMateria
 		AMateria();
 		AMateria(std::string const & type);
 		AMateria(const AMateria &other);
-		~AMateria();
+		virtual ~AMateria();
 		AMateria& operator=(const AMateria &other);
 
 		std::string const & getType() const; //Returns the materia type
@@ -21,6 +24,5 @@ class AMateria
 		std::string _type;
 
 };
-
 
 #endif

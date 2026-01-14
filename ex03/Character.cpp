@@ -12,7 +12,7 @@ Character::Character(std::string name) :
 _name(name)
 {
 	for(int i(0); i < 4; i++)
-		this->_inventory[i] = NULL; // initialize empty inventory
+		this->_inventory[i] = NULL;
 	std::cout << "(Character) parametric constructor called" << std::endl;
 }
 
@@ -21,39 +21,35 @@ Character::Character(const Character &other)
 	for (int i = 0; i < 4; i++)
 	{
 		if (!(other._inventory)[i])
-			(this->_inventory)[i] = NULL;
+			(this->_inventory)[i] = NULL; // vraiment necessaire ?
 		else
+		{
 			(this->_inventory)[i] = (other._inventory)[i]->clone();
+		}
 	}
 	this->_name = other._name;
-	//*this = other;
-
-	// faire copie profonde Materias du Character doivent être delete avant que les nouvelles ne les remplacent dans l’inventaire.
-	// Bien évidemment, les Materias doivent aussi être supprimées à la destruction d’un Character.
+	// Pas de copie profonde car inventaire vide
 }
 
 Character& Character::operator=(const Character &other)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if ((this->_inventory)[i])
-			delete ((this->_inventory)[i]);
+		if (this->_inventory[i])
+		{
+			delete this->_inventory[i];
+			this->_inventory[i] = NULL;
+		}
 		if (!(other._inventory)[i])
 			(this->_inventory)[i] = NULL;
 		else
+		{
 			(this->_inventory)[i] = (other._inventory)[i]->clone();
+		}
 	}
-	//this->_name = other._name;
-	// for(int i(0); i < 4; i++)
-	// {
-	// 	delete this->_inventory[i];
-	// 	this->_inventory[i] = NULL;
-	// }
-	// for(int i(0); i < 4; i++)
-	// 	//this->_inventory[i] = new AMateria.getType()(other._inventory[i]);
-	// 	//this->_inventory[i] = new std::string(other._inventory[i].getType());
-	// 	this->_inventory[i] = new std::string(other._inventory[i]);
-	// return *this;
+/*
+	Chaque perso a son inventaire (constuctor), virer juste les adresses des Objets AMateria (Ice/Cure)
+*/
 	// faire copie profonde Materias du Character doivent être delete avant que les nouvelles ne les remplacent dans l’inventaire.
 	// Bien évidemment, les Materias doivent aussi être supprimées à la destruction d’un Character.
 	return (*this);
@@ -80,7 +76,7 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-		for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		if (!(this->_inventory)[i])
 		{

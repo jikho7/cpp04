@@ -9,7 +9,7 @@ class Character : public ICharacter
 {
 	public:
 		Character();
-		Character(std::string name);
+		Character(std::string name); // mettre std::string const ¥ name ?
 		Character(const Character &other);
 		Character& operator=(const Character &other);
 		virtual ~Character();

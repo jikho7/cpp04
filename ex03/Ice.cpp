@@ -1,14 +1,16 @@
 #include "Ice.hpp"
 //#include "AMateria.hpp"
 
-Ice::Ice() {std::cout << "(Ice) default constructor called" << std::endl;}
+// Ice::Ice() {std::cout << "(Ice) default constructor called" << std::endl;}
 Ice::~Ice() {std::cout << "(Ice) default decontructor called" << std::endl;}
-Ice::Ice(const Ice &other) {*this = other;}
-
-Ice::Ice(std::string type) : AMateria(type)
+Ice::Ice() : AMateria()
 {
-	std::cout << "(Ice) parametric constructor called" << std::endl;
+	this->_type = "ice";
+	std::cout << "(Ice) parametric constructor called. Type : " << this->_type << std::endl;
 }
+
+Ice::Ice(const Ice &other) : AMateria() {*this = other;}
+
 
 Ice& Ice::operator=(const Ice &other)
 {
@@ -24,5 +26,5 @@ Ice* Ice::clone() const
 
 void Ice::use(ICharacter& target)
 {
-   std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+   std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

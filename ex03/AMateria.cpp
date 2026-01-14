@@ -27,13 +27,11 @@ std::string const & AMateria::getType() const //Returns the materia type
 	return (this->_type);
 }
 
-//virtual AMateria* clone() const = 0;
-
 void AMateria::use(ICharacter& target)
 {
 	std::cout << "(AMateria use) * shoots an ice bolt at *" << target.getName() << std::endl;
 	//Ice : "* shoots an ice bolt at <name> *"
 	//std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
 	//• Cure : "* heals <name>’s wounds *"
-
 }
+

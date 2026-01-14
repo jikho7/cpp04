@@ -12,7 +12,7 @@ class Cure : public AMateria
 {
 	public:
 		Cure();
-		Cure(std::string type);
+		//Cure(std::string type);
 		virtual ~Cure();
 		Cure(const Cure &other);
 		Cure& operator=(const Cure &other);
@@ -21,7 +21,8 @@ class Cure : public AMateria
 		virtual void use(ICharacter& target);
 
 	private:
-	//	std::string _type;
+
 };
 
+// virer virtual pour le deconstructor ?
 #endif

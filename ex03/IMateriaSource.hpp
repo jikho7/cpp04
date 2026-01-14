@@ -1,6 +1,5 @@
 #ifndef IMATERIA_H
 #define IMATERIA_H
-// une interface est un ensemble de méthodes déclarées dans une classe, mais non implémentées
 #include <string>
 #include <iostream>
 #include "AMateria.hpp"

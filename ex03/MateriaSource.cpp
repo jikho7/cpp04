@@ -46,6 +46,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 			break ;
 		}
 	}
+	delete m;
 	return ;
 	// Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
 	// plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias

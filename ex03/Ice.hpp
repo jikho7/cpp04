@@ -12,7 +12,7 @@ class Ice : public AMateria
 {
 	public:
 		Ice();
-		Ice(std::string type);
+	//	Ice(std::string type);
 		virtual ~Ice();
 		Ice(const Ice &other);
 		Ice& operator=(const Ice &other);
@@ -21,7 +21,7 @@ class Ice : public AMateria
 		virtual void use(ICharacter& target);
 
 	private:
-	//	std::string _type;
+
 };
 
 #endif

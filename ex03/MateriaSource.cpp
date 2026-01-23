@@ -7,7 +7,14 @@ MateriaSource::MateriaSource(void)
 	return ;
 } //sim
 
-MateriaSource::~MateriaSource() {}
+MateriaSource::~MateriaSource()
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if ((this->_templates)[i])
+			delete (this->_templates)[i];
+	}
+}
 
 MateriaSource::MateriaSource(const MateriaSource &other) : IMateriaSource() //sim
 {
@@ -46,7 +53,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 			break ;
 		}
 	}
-	delete m;
+	// Ne PAS delete m ici - il est stocké dans _templates et sera delete dans le destructeur
 	return ;
 	// Copie la Materia passée en paramètre et la stocke en mémoire afin de la cloner
 	// plus tard. Tout comme le Character, la MateriaSource peut contenir 4 Materias
@@ -55,10 +62,16 @@ void	MateriaSource::learnMateria(AMateria *m)
 
 AMateria	*MateriaSource::createMateria(std::string const &type)
 {
+
 	for (int i = 0; i < 4; i++)
 	{
-		if ((this->_templates)[i]->getType() == type)
-			return ((this->_templates)[i]->clone());
+		if ((this->_templates)[i])
+		{
+			if ((this->_templates)[i]->getType() == type)
+			{
+				return ((this->_templates)[i]->clone());
+			}
+		}
 	}
 	return (0);
 	// Retourne une nouvelle Materia. Celle-ci est une copie de celle apprise précédemment
